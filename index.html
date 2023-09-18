@@ -6,19 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>London Real</title>
+        <style>
+        /* Styling to center the content */
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        #message {
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
+<div id="message">You will be redirected in 2 seconds...</div>
 
 <script>
-    // Execute the redirection after 2 seconds (2000 milliseconds)
-    setTimeout(function() {
-        // Get the current pathname (e.g., "/hello" or "/hello-2")
-        var path = window.location.pathname;
+    // Countdown timer
+    var secondsLeft = 2;
 
-        // Redirect to the new domain with the same pathname
-        window.location.href = "https://londonreal.tv" + path;
-    }, 2000);
+    var countdown = setInterval(function() {
+        secondsLeft--;
+
+        // Update the message
+        if (secondsLeft > 0) {
+            document.getElementById('message').textContent = "You will be redirected in " + secondsLeft + " seconds...";
+        } else {
+            // When countdown reaches 0
+            clearInterval(countdown);
+            
+            // Get the current pathname (e.g., "/hello" or "/hello-2")
+            var path = window.location.pathname;
+            
+            // Redirect to the new domain with the same pathname
+            window.location.href = "https://londonreal.tv" + path;
+        }
+    }, 1000);
 </script>
+    
 
 </body>
 </html>
